@@ -1,0 +1,43 @@
+.search-form{
+    margin: 0 auto;
+    text-align:center;
+}
+
+.search-location{
+    padding: 15px;
+    border-radius: 5px;
+    border: transparent;
+}
+
+.submit-btn{
+    display: block;
+    padding: 15px;
+    margin: 10px auto;
+    text-align: center;
+    border: transparent;
+    border-radius: 5px;
+}
+
+.map-image{
+    width: 90%;
+    height: 70vh;
+    display: block;
+    margin: 100px auto;
+}
+
+.search-form textarea {
+    padding: 20px;
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.search-form button{
+    padding: 20px;
+    width: 200px;
+}
+
+.search-form select{
+    padding: 20px;
+}
