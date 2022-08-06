@@ -27,19 +27,19 @@ img{
     height: 80px;
     padding: 10px;
 }
-ul {
+.nav-list {
     display: inline-flex;
     margin: 0;
     padding: 0;
 }
-li{
+.nav-list li{
     list-style-type: none;
     display: flex;
     flex-flow: column;
     margin:auto 20px;
 
 }
-li p{
+.nav-list li p{
     margin: 0;
     padding: 0;
     text-align: center;

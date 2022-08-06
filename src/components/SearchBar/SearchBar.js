@@ -4,7 +4,7 @@ import axios from "axios";
 import map from "../../../src/map.jpg";
 function SearchBar() {
   let [inputText, setInputText] = useState("");
-  let [detectLanguageKey, setdetectedLanguageKey] = useState("");
+  let [detectLanguageKey, setdetectedLanguageKey] = useState("en");
   let [selectedLanguageKey, setLanguageKey] = useState("");
   let [languagesList, setLanguagesList] = useState([]);
   let [resultText, setResultText] = useState("");
@@ -15,11 +15,11 @@ function SearchBar() {
         q: inputText,
       })
       .then((response) => {
-        console.log("response.data[0].language", response.data[0].language);
-        let lang = response.data[0].language
+        // console.log("response.data[0].language", response.data[0].language);
+        setdetectedLanguageKey(response.data[0].language)
         let data = {
           q: inputText,
-          source: lang,
+          source: detectLanguageKey,
           target: selectedLanguageKey,
         };
         axios
@@ -59,6 +59,7 @@ function SearchBar() {
   return (
     <div>
       <div className="search-form">
+        <label>Source language : English</label>
         <textarea
           rows="10"
           cols="80"
