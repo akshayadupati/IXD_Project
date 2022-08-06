@@ -1,4 +1,4 @@
-import SearchBar from "./components/SearchBar/SearchBar";
+import Map from "./components/Map/Map";
 import Home from "./components/Home/Home";
 import Language from "./components/Language/Language";
 import Navigation from "./components/Navigation/Navigation";
@@ -16,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/map" element={<Map />} />
           <Route path="language" element={<Language />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="*" element={<ErrorPage />} />

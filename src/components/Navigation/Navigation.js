@@ -13,7 +13,7 @@ function Navigation() {
     <nav>
       <img className="logo" src={logo} />
       <ul className="nav-list">
-        <li className="nav-item"><Link className="nav-link" to="/search"><img src={mapicon} /><p>Map</p></Link></li>
+        <li className="nav-item"><Link className="nav-link" to="/map"><img src={mapicon} /><p>Map</p></Link></li>
         <li className="nav-item"><Link className="nav-link" to="/language"><img src={language} /><p>Language</p></Link></li>
         <li className="nav-item"><Link className="nav-link" to="/forum"><img src={forum} /><p>Forum</p></Link></li>
       </ul>

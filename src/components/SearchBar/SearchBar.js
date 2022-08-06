@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./SearchBar.scss";
 import axios from "axios";
-import map from "../../../src/map.jpg";
+
 function SearchBar() {
   let [inputText, setInputText] = useState("");
   let [detectLanguageKey, setdetectedLanguageKey] = useState("en");
@@ -36,7 +36,7 @@ function SearchBar() {
   useEffect(() => {
     axios.get("https://libretranslate.de/languages").then((res) => {
       setLanguagesList(res.data);
-      console.log("languagesList", languagesList);
+      // console.log("languagesList", languagesList);
     });
   }, [selectedLanguageKey]);
 
