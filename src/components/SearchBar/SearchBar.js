@@ -3,11 +3,11 @@ import "./SearchBar.scss";
 import axios from "axios";
 import map from "../../../src/map.jpg";
 function SearchBar() {
-  const [inputText, setInputText] = useState("");
-  const [detectLanguageKey, setdetectedLanguageKey] = useState("");
-  const [selectedLanguageKey, setLanguageKey] = useState("");
-  const [languagesList, setLanguagesList] = useState([]);
-  const [resultText, setResultText] = useState("");
+  let [inputText, setInputText] = useState("");
+  let [detectLanguageKey, setdetectedLanguageKey] = useState("");
+  let [selectedLanguageKey, setLanguageKey] = useState("");
+  let [languagesList, setLanguagesList] = useState([]);
+  let [resultText, setResultText] = useState("");
 
   const getLanguageSource = () => {
     axios
@@ -15,7 +15,21 @@ function SearchBar() {
         q: inputText,
       })
       .then((response) => {
-        setdetectedLanguageKey(response.data[0].language);
+        console.log("response.data[0].language", response.data[0].language);
+        let lang = response.data[0].language
+        let data = {
+          q: inputText,
+          source: lang,
+          target: selectedLanguageKey,
+        };
+        axios
+          .post(`https://libretranslate.de/translate`, data)
+          .then((response) => {
+            setResultText(response.data.translatedText);
+          });
+      })
+      .catch((error) => {
+        console.log("error", error);
       });
   };
 
@@ -24,23 +38,23 @@ function SearchBar() {
       setLanguagesList(res.data);
       console.log("languagesList", languagesList);
     });
-  }, [inputText]);
+  }, [selectedLanguageKey]);
 
   const languageKey = (selectedLanguage) => {
     setLanguageKey(selectedLanguage.target.value);
   };
 
-  const translateText = async () => {
-    await getLanguageSource();
-    let data = {
-      q: inputText,
-      source: detectLanguageKey,
-      target: selectedLanguageKey,
-    };
-    axios.post(`https://libretranslate.de/translate`, data).then((response) => {
-      setResultText(response.data.translatedText);
-    });
-  };
+  // const translateText = async () => {
+  //   await getLanguageSource();
+  //   let data = {
+  //     q: inputText,
+  //     source: detectLanguageKey,
+  //     target: selectedLanguageKey,
+  //   };
+  //   axios.post(`https://libretranslate.de/translate`, data).then((response) => {
+  //     setResultText(response.data.translatedText);
+  //   });
+  // };
 
   return (
     <div>
@@ -62,15 +76,19 @@ function SearchBar() {
           <select onChange={languageKey} name="selectedLanguageKey">
             <option>Please Select Language..</option>
             {languagesList.map((lang) => {
-              return <option value={lang.code}>{lang.name}</option>;
+              return (
+                <option key={lang.code} value={lang.code}>
+                  {lang.name}
+                </option>
+              );
             })}
           </select>
         )}
 
         <button
-          class="submit-btn"
+          className="submit-btn"
           onClick={(e) => {
-            translateText();
+            getLanguageSource(e);
           }}
         >
           Submit
