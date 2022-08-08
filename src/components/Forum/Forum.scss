@@ -1,0 +1,30 @@
+.btn-group{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.btn-group button{
+    padding: 2em 5em;
+    text-align: center;
+    margin: 10px;
+    border: transparent;
+    border-radius: 5px;
+}
+
+.mail-image{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    margin: auto 0;
+}
+
+.img-class{
+    display: flex;
+    justify-content: center;
+}
+
+button:active{
+    background-color: black;
+    color: white
+}
